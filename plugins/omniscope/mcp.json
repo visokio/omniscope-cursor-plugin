@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "omniscope": {
+      "type": "http",
+      "url": "https://omniscope.visokio.com/_api_/v1/cloudmcp",
+      "auth": {
+        "CLIENT_ID": "https://cursor.com/oauth/mcp-client.json",
+        "scopes": [
+          "projectapi:execute",
+          "workflowapi:execute"
+        ]
+      }
+    }
+  }
+}

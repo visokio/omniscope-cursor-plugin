@@ -1,0 +1,33 @@
+{
+  "name": "omniscope",
+  "displayName": "Omniscope",
+  "version": "0.1.8",
+  "description": "Connect, prepare and analyse data, build verifiable visual workflows, and create interactive reports through conversation.",
+  "author": {
+    "name": "Visokio",
+    "email": "support@visokio.com"
+  },
+  "homepage": "https://visokio.com",
+  "repository": "https://github.com/visokio/omniscope-cursor-plugin",
+  "license": "MIT",
+  "logo": "assets/icon.png",
+  "keywords": [
+    "omniscope",
+    "visokio",
+    "data",
+    "analytics",
+    "etl",
+    "workflows",
+    "reports",
+    "dashboards",
+    "mcp"
+  ],
+  "category": "integrations",
+  "tags": [
+    "data-analytics",
+    "data-preparation",
+    "business-intelligence",
+    "mcp"
+  ],
+  "mcpServers": "./mcp.json"
+}

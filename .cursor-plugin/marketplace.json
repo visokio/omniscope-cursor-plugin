@@ -1,23 +1,18 @@
 {
-  "name": "cursor-plugin-starters",
+  "name": "visokio-plugins",
   "owner": {
-    "name": "Your Org",
-    "email": "plugins@example.com"
+    "name": "Visokio",
+    "email": "support@visokio.com"
   },
   "metadata": {
-    "description": "Starter marketplace template for Cursor plugins",
-    "version": "0.1.0"
+    "description": "Omniscope data preparation, analytics and interactive reporting for Cursor.",
+    "version": "0.1.8"
   },
   "plugins": [
     {
-      "name": "starter-simple",
-      "source": "./plugins/starter-simple",
-      "description": "Minimal plugin with rules and skills only"
-    },
-    {
-      "name": "starter-advanced",
-      "source": "./plugins/starter-advanced",
-      "description": "Full-featured plugin with rules, skills, agents, commands, hooks, and MCP"
+      "name": "omniscope",
+      "source": "./plugins/omniscope",
+      "description": "Connect, prepare and analyse data, build verifiable visual workflows, and create interactive reports through conversation."
     }
   ]
 }
