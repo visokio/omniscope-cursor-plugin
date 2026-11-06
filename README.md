@@ -1,7 +1,5 @@
 # Omniscope for Cursor
 
-Data to insight. Yours to own.
-
 Connect Cursor to [Omniscope](https://visokio.com) to prepare and analyse data, build visual workflows, inspect results and create interactive reports through conversation. Keep an editable Omniscope project whose sources, transformations and outputs you can inspect and reuse.
 
 ## What you can do
