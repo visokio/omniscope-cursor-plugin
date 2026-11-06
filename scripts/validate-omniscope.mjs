@@ -33,4 +33,4 @@ assert.deepEqual(config.mcpServers.omniscope, {
 assert.ok(!manifest.variables, 'Published Cursor client ID requires no installer variable');
 assert.ok(!JSON.stringify(config).includes('com.openai'), 'Remove host-specific OpenAI extensions');
 for (const file of ['README.md', 'LICENSE', 'docs/marketplace-listing.md', 'docs/review-guide.md']) await access(file);
-console.log('Omniscope configuration validation passed. Authenticated Cursor smoke tests remain manual.');
+console.log('Omniscope configuration validation passed.');

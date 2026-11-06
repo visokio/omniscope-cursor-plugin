@@ -6,7 +6,7 @@ Connect Cursor to Omniscope Cloud for data preparation, visual workflows, analyt
 
 Clone this repository, then copy **the contents of this directory** (`plugins/omniscope`, including `.cursor-plugin`) to `~/.cursor/plugins/local/omniscope/`. Open a new Cursor window or reload the window so Cursor loads the local plugin. Do not copy the repository root into that folder: the root is a marketplace containing the plugin.
 
-Use Cursor's Customize page to check the plugin and its Omniscope MCP server. After the server-side OAuth fix described below, complete OAuth sign-in, then ask Cursor to list your projects. Follow the [manual test guide](../../docs/review-guide.md) before submission. Avoid enabling a second manual MCP entry for the same server while testing the plugin.
+Use Cursor's Customize page to check the plugin and its Omniscope MCP server. Complete OAuth sign-in, then ask Cursor to list your projects. Follow the [manual test guide](../../docs/review-guide.md) before submission. Avoid enabling a second manual MCP entry for the same server while testing the plugin.
 
 For connection-only testing, merge the contents of this directory's `mcp.json` into `.cursor/mcp.json` in a test workspace, or `~/.cursor/mcp.json` globally. This tests the connection without testing plugin discovery or its rules.
 
@@ -16,9 +16,7 @@ The `mcp.json` file connects to `https://omniscope.visokio.com/_api_/v1/cloudmcp
 
 Authentication uses OAuth with PKCE and Cursor's published client ID, `https://cursor.com/oauth/mcp-client.json`. No installer variable or client secret is required. The requested scopes are `projectapi:execute` and `workflowapi:execute`.
 
-In Omniscope, allow that client ID and the callback for the surface being tested. The confirmed Cursor web / Cloud Agents callback is `https://www.cursor.com/agents/mcp/oauth/callback`. Cursor's metadata also lists local callbacks `http://localhost:8787/callback` and `http://127.0.0.1:8787/callback`; enable and test the actual callback used by desktop Cursor separately.
-
-On 2026-11-06, the client ID and web callback were enabled, but the real Cursor web sign-in still failed before consent with `invalid_client / The client's metadata document could not be used`. Omniscope's application log identified the failure: `could not be fetched: IOException malformed response headers` while downloading Cursor's metadata document. The precise parsing failure remains unresolved; header-size limits are a hypothesis, not a confirmed diagnosis. Fix the server's outbound metadata downloader and complete authenticated Cursor testing before submission. No authenticated end-to-end pass is claimed.
+Cursor web / Cloud Agents uses the callback `https://www.cursor.com/agents/mcp/oauth/callback`. Cursor's published metadata also includes the desktop callbacks `http://localhost:8787/callback` and `http://127.0.0.1:8787/callback`.
 
 Discovery endpoints:
 
@@ -29,7 +27,7 @@ Discovery endpoints:
 ## Troubleshooting
 
 - **Account not activated for AI apps:** contact support@visokio.com.
-- **Sign-in fails before consent:** compare the actual client ID and callback with Omniscope settings. For the known metadata-document error, inspect Omniscope application logs and fix the outbound metadata fetch. Do not substitute an invented client ID or commit a token.
+- **Sign-in fails:** reconnect the MCP server and sign in with your AI-enabled Omniscope account. Contact support@visokio.com if you need help.
 - **No tools or projects:** check the MCP connection, sign-in, account enablement and project permissions. Start with project discovery.
 - **Execution fails:** inspect the actual error, source credentials, block configuration and connections. Report failure without claiming fresh results.
 - **Local file missing:** make the file accessible through a supported source or upload tool; the remote server cannot read arbitrary local workspace paths.

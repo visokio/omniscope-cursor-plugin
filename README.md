@@ -14,10 +14,6 @@ Connect Cursor to [Omniscope](https://visokio.com) to prepare and analyse data, 
 
 Connectors, blocks and reporting features depend on your account, permissions and server configuration. Discover the live tools and schemas before using them.
 
-## Release status
-
-Package validation passes. Marketplace submission is pending a server-side OAuth metadata download fix and authenticated testing in Cursor. See the [release guide](docs/review-guide.md) for the observed authentication failures and required setup.
-
 ## Requirements and installation
 
 Requires an Omniscope Cloud account enabled for AI-agent access. Contact [support@visokio.com](mailto:support@visokio.com) to request enablement.
@@ -46,7 +42,7 @@ node scripts/validate-template.mjs
 node scripts/validate-omniscope.mjs
 ```
 
-The first script is retained from [Cursor's template](https://github.com/cursor/plugin-template). Its warning about absent hooks is expected: this plugin needs no hooks. The second checks Omniscope's MCP connection and metadata. Neither performs authenticated end-to-end testing.
+The first script is retained from [Cursor's template](https://github.com/cursor/plugin-template). Its warning about absent hooks is expected: this plugin needs no hooks. The second checks Omniscope's MCP configuration and plugin metadata.
 
 - [Marketplace submission copy](docs/marketplace-listing.md)
 - [Manual smoke tests and release checklist](docs/review-guide.md)

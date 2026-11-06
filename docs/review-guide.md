@@ -1,34 +1,16 @@
 # Review and release guide
 
-## Current authentication blocker — 2026-11-06
-
-The MCP endpoint is reachable and an unauthenticated initialize request correctly returns HTTP 401 with protected-resource metadata. The resource and authorization-server metadata are reachable and advertise PKCE, public-client authentication and the two requested scopes, but no dynamic registration endpoint.
-
-Cursor's confirmed web authorization request uses client ID `https://cursor.com/oauth/mcp-client.json` and callback `https://www.cursor.com/agents/mcp/oauth/callback`. Both have now been enabled in Omniscope. The actual Cursor web flow still returns `invalid_client / The client's metadata document could not be used` before sign-in.
-
-The Omniscope application log at 2026-11-06T11:44:52.161Z reports:
-
-```text
-Client metadata document https://cursor.com/oauth/mcp-client.json refused: could not be fetched: IOException malformed response headers
-```
-
-This identifies a failure in the server's outbound HTTP fetch of Cursor metadata, before JSON validation. It does not identify the exact malformed header or prove a header-size limit. Fix that downloader and retry; retain the current client ID and web callback. The plugin uses the published client ID directly and requires no client secret or installer variable. No server source or OAuth administration is included in this repository.
-
-Desktop authentication remains unverified. Enable the actual desktop callback separately and test it; Cursor's metadata lists both `http://localhost:8787/callback` and `http://127.0.0.1:8787/callback`.
-
-Do not submit as fully tested until setup and the authenticated checks below pass.
-
 ## Before submission
 
 1. Run both validation scripts from the repository root.
 2. Load `plugins/omniscope` as a local Cursor plugin, as documented in its README.
-3. After the metadata download fix, sign in from Cursor with an AI-enabled Omniscope Cloud test account containing sample projects and a template with built-in demo data. Keep reviewer credentials out of this public repository; supply access privately through the review process if requested.
-4. Confirm the live tools appear and complete the cases below. Record the Cursor version and actual outcomes. These are test instructions, not a record of passed authenticated tests.
+3. Sign in from Cursor with an AI-enabled Omniscope Cloud test account containing sample projects and a template with built-in demo data. Keep reviewer credentials out of this public repository; supply access privately through the review process if requested.
+4. Confirm the live tools appear and complete the cases below. Record the Cursor version and outcomes.
 5. Submit the public repository URL at https://cursor.com/marketplace/publish. Copy the listing from `marketplace-listing.md`. Cursor's team reviews submissions; pushing this repository does not publish the listing.
 
 ## Authentication checks
 
-Confirm desktop sign-in, consent and return to Cursor. If distributing to web/Cloud Agents, test that surface separately. Verify only authorized projects are visible, reconnect after sign-out, and verify refresh behaviour if the server issues refresh tokens. Metadata discovery and an unauthenticated 401 response do not verify token exchange or authenticated tools.
+Confirm desktop sign-in, consent and return to Cursor. If distributing to web/Cloud Agents, test that surface separately. Verify only authorized projects are visible, reconnect after sign-out, and verify refresh behaviour if the server issues refresh tokens.
 
 ## Positive cases
 
